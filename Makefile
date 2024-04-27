@@ -1,59 +1,44 @@
-SRCC = client.c
-			SRCCB = client_bonus.c
+SRCC=client.c
+SRCCB=client_bonus.c
 
-						OBJC = $(SRCC
-								:.c =.o)
-	OBJCB = $(SRCCB
-				:.c =.o)
+OBJC = $(SRCC:.c=.o)
+OBJCB = $(SRCCB:.c=.o)
 
-		SRCS = server.c
-					SRCSB = server_bonus.c
+SRCS=server.c
+SRCSB=server_bonus.c
 
-								OBJS = $(SRCS
-										:.c =.o)
-			OBJSB = $(SRCSB
-						:.c =.o)
+OBJS = $(SRCS:.c=.o)
+OBJSB = $(SRCSB:.c=.o)
 
-				CC = cc
-					CFLAGS = -Wall - Wextra - Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-													SERVER = server
-									CLIENT = client
+SERVER = server
+CLIENT = client
 
-										SERVER_BONUS = server_bonus
-											CLIENT_BONUS = client_bonus
+SERVER_BONUS = server_bonus
+CLIENT_BONUS = client_bonus
 
-															all : $(SERVER) $(CLIENT)
+all:$(SERVER) $(CLIENT)
 
-																		$(SERVER)
-	: $(SRCS)
-			$(CC) $(CFLAGS) $(SRCS) -
-		o server
+$(SERVER): $(SRCS)
+			$(CC) $(CFLAGS) $(SRCS) -o server
 
-			$(SERVER_BONUS)
-	: $(SRCSB)
-			$(CC) $(CFLAGS) $(SRCSB) -
-		o server_bonus
+$(SERVER_BONUS): $(SRCSB)
+			$(CC) $(CFLAGS) $(SRCSB) -o server_bonus
 
-			$(CLIENT)
-	: $(SRCC)
-			$(CC) $(CFLAGS) $(SRCC) -
-		o client
+$(CLIENT): $(SRCC)
+			$(CC) $(CFLAGS) $(SRCC) -o client
 
-			$(CLIENT_BONUS)
-	: $(SRCCB)
-			$(CC) $(CFLAGS) $(SRCCB) -
-		o client_bonus
-			clean : rm -
-					rf $(OBJC) $(OBJS)
-						rm -
-					rf $(OBJCB) $(OBJSB)
+$(CLIENT_BONUS): $(SRCCB)
+			$(CC) $(CFLAGS) $(SRCCB) -o client_bonus
+clean: 
+		rm -rf $(OBJC) $(OBJS)
+		rm -rf $(OBJCB) $(OBJSB) 
 
-						fclean : clean
-									rm -
-								rf $(SERVER) $(CLIENT)
-									rm -
-								rf $(SERVER_BONUS) $(CLIENT_BONUS)
+fclean: clean
+		rm -rf $(SERVER) $(CLIENT)
+		rm -rf $(SERVER_BONUS) $(CLIENT_BONUS)
 
-									re : fclean all
-											bonus : $(SERVER_BONUS) $(CLIENT_BONUS)
+re :fclean all
+bonus:$(SERVER_BONUS) $(CLIENT_BONUS)

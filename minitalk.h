@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 02:43:00 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/04/24 20:08:57 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/04/29 22:07:15 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "stdlib.h"
 # include "string.h"
 # include "unistd.h"
-
+# include "utils.c"
 typedef struct s_data
 {
 	int		byte;

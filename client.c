@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 20:08:22 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/04/28 08:17:35 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/04/29 18:44:23 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,23 @@ void	ack(int signum)
 void	to_binary(int pid, unsigned char c)
 {
 	int	i;
-
+	int pid_check;
 	i = 7;
 	while (i >= 0)
 	{
 		g_data.byte = (c >> i) & 1;
 		if (g_data.byte)
-			kill(pid, SIGUSR2);
+			pid_check = kill(pid, SIGUSR2);
 		else
-			kill(pid, SIGUSR1);
+			pid_check = kill(pid, SIGUSR1);
+
+		if (pid_check == -1 && c!= '\n')
+		{
+			write(1,"pid not found\n", 14);
+			return;
+		}
+			
+
 		usleep(500);
 		i--;
 	}

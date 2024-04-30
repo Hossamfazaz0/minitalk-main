@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 02:44:10 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/04/29 18:38:03 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/04/30 08:44:08 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ void	signal_handler(int signum)
 int	main(void)
 {
 	struct sigaction	sa;
+	int					pid;
 
+	pid = getpid();
 	sa.sa_handler = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	printf("Server PID: %d\n", getpid());
+	write(1, "Server PID :\n", 13);
+	ft_putnbr_fd(pid, 1);
+	write(1, "\n", 1);
 	while (1)
 		pause();
 	return (0);

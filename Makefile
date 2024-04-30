@@ -6,12 +6,12 @@
 #    By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/28 08:17:19 by hfazaz            #+#    #+#              #
-#    Updated: 2024/04/28 08:17:22 by hfazaz           ###   ########.fr        #
+#    Updated: 2024/04/30 08:41:58 by hfazaz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCC=client.c
-SRCCB=client_bonus.c
+SRCC=client.c utils.c
+SRCCB=client_bonus.c utils.c
 
 OBJC = $(SRCC:.c=.o)
 OBJCB = $(SRCCB:.c=.o)

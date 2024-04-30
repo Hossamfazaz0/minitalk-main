@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 20:08:22 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/04/29 13:24:39 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/04/30 08:43:56 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	msg = av[2];
-	pid = atoi(av[1]);
+	pid = ft_atoi(av[1]);
 	if (pid == -1)
 		return (0);
 	sa.sa_handler = ack;
-	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	while (*msg)
 	{

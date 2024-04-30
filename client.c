@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 20:08:22 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/04/29 18:44:23 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/04/30 08:43:59 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ack(int signum)
 void	to_binary(int pid, unsigned char c)
 {
 	int	i;
-	int pid_check;
+	int	pid_check;
+
 	i = 7;
 	while (i >= 0)
 	{
@@ -34,14 +35,11 @@ void	to_binary(int pid, unsigned char c)
 			pid_check = kill(pid, SIGUSR2);
 		else
 			pid_check = kill(pid, SIGUSR1);
-
-		if (pid_check == -1 && c!= '\n')
+		if (pid_check == -1 && c != '\n')
 		{
-			write(1,"pid not found\n", 14);
-			return;
+			write(1, "pid not found\n", 14);
+			return ;
 		}
-			
-
 		usleep(500);
 		i--;
 	}
@@ -58,7 +56,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	msg = av[2];
-	pid = atoi(av[1]);
+	pid = ft_atoi(av[1]);
 	if (pid == -1)
 		return (0);
 	while (*msg)
